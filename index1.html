@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Foto Bellissima Alessia</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+    }
+    #passwordSection, #contentSection {
+      display: none;
+    }
+    #passwordSection.active, #contentSection.active {
+      display: block;
+    }
+    .hidden {
+      display: none;
+    }
+    h1 {
+      margin-top: 50px;
+    }
+    button {
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+      font-size: 16px;
+      border-radius: 5px;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    a {
+      color: #007BFF;
+      text-decoration: none;
+      font-size: 20px;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    img {
+      max-width: 100%;
+      height: auto;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sezione password -->
+  <div id="passwordSection" class="active">
+    <h1>Inserisci la password per accedere:</h1>
+    <input type="password" id="passwordInput" placeholder="Password">
+    <button onclick="checkPassword()">Accedi</button>
+    <p id="errorMessage" style="color: red; display: none;">Password errata. Riprova.</p>
+  </div>
+
+  <!-- Sezione contenuto -->
+  <div id="contentSection">
+    <h1>Foto Bellissima Alessia</h1>
+    <a href="#" onclick="showGoat()">Clicca qui per vedere la foto</a>
+    <div id="goatImage" class="hidden">
+      <h2>Ecco la foto:</h2>
+      <img src="goat.jpg" alt="Una bellissima capra">
+    </div>
+  </div>
+
+  <script>
+    function checkPassword() {
+      const password = document.getElementById("passwordInput").value;
+      const errorMessage = document.getElementById("errorMessage");
+      const passwordSection = document.getElementById("passwordSection");
+      const contentSection = document.getElementById("contentSection");
+      
+      if (password === "caccarosa") {
+        // Mostra il contenuto e nascondi la sezione della password
+        passwordSection.classList.remove("active");
+        contentSection.classList.add("active");
+      } else {
+        errorMessage.style.display = "block";
+      }
+    }
+
+    function showGoat() {
+      const goatImage = document.getElementById("goatImage");
+      goatImage.classList.remove("hidden");
+    }
+  </script>
+</body>
+</html>
